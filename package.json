@@ -1,0 +1,22 @@
+{
+  "name" : "coux"
+, "description" : "Minimum viable CouchDB client, really just JSON and REST"
+, "homepage" : "http://github.com/jchris/coux"
+, "version" : "0.1.0"
+, "author" : "J Chris Anderson <jchris@couchbase.com> (http://jchrisa.net)"
+, "contributors" : []
+, "bugs" :
+  { "mail" : "jchris@couchbase.com"
+  , "web" : "http://github.com/jchris/coux/issues"
+  }
+, "directories" : { "lib" : "./lib" }
+, "engines" : { "node" : ">=0.2.0" }
+, "licenses" :
+  [ { "type" : "Apache 2.0"
+    , "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ]
+, "main" : "./lib/coux-request"
+, "dependencies": 
+  { "request" : "2.1.x" }
+}
