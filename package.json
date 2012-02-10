@@ -7,7 +7,7 @@
 , "contributors" : []
 , "bugs" :
   { "mail" : "jchris@couchbase.com"
-  , "web" : "http://github.com/jchris/coux/issues"
+  , "url" : "http://github.com/jchris/coux/issues"
   }
 , "directories" : { "lib" : "./lib" }
 , "engines" : { "node" : ">=0.2.0" }
