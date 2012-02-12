@@ -4,7 +4,7 @@ Coux is the least amount of CouchDB client I can imagine. It doesn't do much, bu
 
 ## Usage
 
-The only thing worth noting is that for coux, arrays are a perfectly good way to specify paths. And it'll do the URL encoding for you.
+The only thing worth noting is that for coux, arrays are a perfectly good way to specify paths. And it'll do the URL encoding for you. Oh and lately I've noticed it's more general that Couch. Mikeal tells me it's almost just a config mode to request. See TODOs.
 
 ```javascript
 var db = "http://jchris.iriscouch.com/foobar";
@@ -34,6 +34,11 @@ coux.post(db, , function(err, ok) {
     console.log(ok);
   })
 })
+
+
 ```
+## TODOs
+
+Make it into like no code just a basic request config. Not sure about adding _changes or not.
 
 Enjoy!
