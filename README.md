@@ -39,6 +39,6 @@ coux.post(db, , function(err, ok) {
 ```
 ## TODOs
 
-Make it into like no code just a basic request config. Not sure about adding _changes or not.
+Make it into like no code just a basic request config.
 
 Enjoy!
