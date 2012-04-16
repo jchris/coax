@@ -34,9 +34,8 @@ coux.post(db, , function(err, ok) {
     console.log(ok);
   })
 })
-
-
 ```
+
 ## TODOs
 
 Make it into like no code just a basic request config.
