@@ -37,7 +37,22 @@ function coux(opts, body) {
             }
             query = query.join('&');
         }
-        opts.url = [""].concat(opts.url).map(encodeURIComponent).join('/');
+
+        var first = true;
+        opts.url = (opts.url.map(function(path) {
+            if (first) {
+                first = false;
+                if (/^http/.test(path)) {
+                  //if (/\/$/.test(path)) {
+                  //  return path.substring(0,path.length-1)
+                  //} else {
+                    return path;                    
+                  //}
+                }
+            }
+            return encodeURIComponent(path);
+        })).join('/');
+        
         if (query) {
             opts.url = opts.url + "?" + query;
         }
