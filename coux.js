@@ -87,6 +87,16 @@ coux.post = function() {
     coux.apply(this, arguments);
 };
 
+coux.del = function() {
+    var opts = arguments[0];
+    if (typeof opts === 'string' || Array.isArray(opts)) { 
+        opts = {url:opts};
+    }
+    opts.type = "DELETE";
+    arguments[0] = opts;
+    coux.apply(this, arguments);
+};
+
 coux.get = coux;
 
 coux.changes = function(dbname, onDBChange) {
