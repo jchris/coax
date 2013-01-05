@@ -1,39 +1,27 @@
-# Coux, pronounced "Couch"
+# coux
 
-Coux is the least amount of CouchDB client I can imagine. It doesn't do much, but it is relaxing.
+Couch client using pax for path currying and request for HTTP.
 
-## Usage
-
-The only thing worth noting is that for coux, arrays are a perfectly good way to specify paths. And it'll do the URL encoding for you.
+## Getting Started
+Install the module with: `npm install coux`
 
 ```javascript
-var db = "http://jchris.iriscouch.com/foobar";
-
-// Get database info:
-coux(db, function(err, info) {
-  console.log(info)
-})
-
-// Get a document:
-coux([db, "mydocid"], function(err, doc) {
-  console.log(doc)
-  // Update a document:
-  doc.updated_by = "yours truly";
-  coux.put([db, "mydocid"], doc, function(err, ok) {
-    console.log(ok)
-  })
-})
-
-// Create a document letting the server assign the id:
-var newDoc = {foo : "bar"};
-coux.post(db, , function(err, ok) {
-  console.log(ok)
-  
-  // Delete a document without sending the doc body
-  coux.del([db, ok.id, {rev : ok.rev}], function(err, ok) {
-    console.log(ok);
-  })
-})
+var coux = require('coux');
+coux.awesome(); // "awesome"
 ```
 
-Enjoy!
+## Documentation
+_(Coming soon)_
+
+## Examples
+_(Coming soon)_
+
+## Contributing
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/cowboy/grunt).
+
+## Release History
+_(Nothing yet)_
+
+## License
+Copyright (c) 2013 Chris Anderson  
+Licensed under the Apache license.
