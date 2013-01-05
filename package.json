@@ -2,7 +2,7 @@
   "name" : "coux"
 , "description" : "Minimum viable CouchDB client, really just JSON and REST"
 , "homepage" : "http://github.com/jchris/coux"
-, "version" : "0.1.5"
+, "version" : "0.1.6"
 , "author" : "J Chris Anderson <jchris@couchbase.com> (http://jchrisa.net)"
 , "contributors" : []
 , "bugs" :
@@ -17,6 +17,6 @@
     }
   ]
 , "main" : "./lib/coux-request"
-, "dependencies": 
+, "dependencies":
   { "request" : "2.x" }
 }
