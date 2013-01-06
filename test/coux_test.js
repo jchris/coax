@@ -35,6 +35,10 @@ exports['/awesome'] = {
       res.statusCode = 200;
       res.end(JSON.stringify({awesome:true, method : req.method}));
     };
+    handlers['/very/awesome/coat'] = function(req, res) {
+      res.statusCode = 200;
+      res.end(JSON.stringify({coat:true, method : req.method}));
+    };
     done();
   },
   '200 get': function(test) {
@@ -87,7 +91,18 @@ exports['/awesome'] = {
     // test.expect()
     var host = coux("http://localhost:3001/"),
       resource = host(["very","awesome"]);
-    resource("", function(err, json){
+    resource("coat", function(err, json){
+      test.equal(err, null);
+      test.equal(json.coat, true, 'should be coat.');
+      test.equal(json.method, 'GET', 'should be get.');
+      test.done();
+    });
+  },
+  '200 array no path' : function(test) {
+    // test.expect()
+    var host = coux("http://localhost:3001/"),
+      resource = host(["very","awesome"]);
+    resource(function(err, json){
       test.equal(err, null);
       test.equal(json.awesome, true, 'should be awesome.');
       test.equal(json.method, 'GET', 'should be get.');
@@ -98,7 +113,7 @@ exports['/awesome'] = {
     // test.expect()
     var host = coux("http://localhost:3001/"),
       resource = host(["very","awesome"]);
-    resource.put("", function(err, json){
+    resource.put(function(err, json){
       test.equal(err, null);
       test.equal(json.awesome, true, 'should be awesome.');
       test.equal(json.method, 'PUT', 'should be put.');
@@ -109,9 +124,9 @@ exports['/awesome'] = {
     // test.expect()
     var host = coux("http://localhost:3001/"),
       resource = host.put(["very","awesome"]);
-    resource("", function(err, json){
+    resource("coat",function(err, json){
       test.equal(err, null);
-      test.equal(json.awesome, true, 'should be awesome.');
+      test.equal(json.coat, true, 'should be awesome.');
       test.equal(json.method, 'PUT', 'should be put.');
       test.done();
     });
