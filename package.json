@@ -28,7 +28,10 @@
   "scripts": {
     "test": "grunt test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "hoax" : "0.2",
+    "pax" : "0.1"
+  },
   "devDependencies": {
     "grunt": "~0.3.6"
   },
