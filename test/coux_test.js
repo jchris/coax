@@ -104,6 +104,17 @@ exports['/awesome'] = {
       test.equal(json.method, 'PUT', 'should be put.');
       test.done();
     });
+  },
+  'put curry' : function(test) {
+    // test.expect()
+    var host = coux("http://localhost:3001/"),
+      resource = host.put(["very","awesome"]);
+    resource("", function(err, json){
+      test.equal(err, null);
+      test.equal(json.awesome, true, 'should be awesome.');
+      test.equal(json.method, 'PUT', 'should be put.');
+      test.done();
+    });
   }
 };
 
