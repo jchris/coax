@@ -13,7 +13,7 @@ var testServer = function() {
       res.end(err.toString());
     }
     var path = url.parse(req.url).pathname;
-    console.log("test server", req.method, path);
+    console.log("test server", req.method, req.url);
     if (handlers[path]) {
       handlers[path](req, res);
     } else {
@@ -143,7 +143,7 @@ exports['/query'] = {
     };
     done();
   },
-  '200 get': function(test) {
+  'get': function(test) {
     // test.expect(2);
     // tests here
     query({myquery:"exciting"}, function(err, json){
@@ -152,6 +152,19 @@ exports['/query'] = {
       test.ok(json.url, 'should have query');
       // test.ok(json.query.myquery, 'should have query');
       test.deepEqual(json.url, "/query?myquery=exciting", 'should be "exciting".');
+      test.done();
+    });
+  },
+  'get startkey etc': function(test) {
+    // test.expect(2);
+    // tests here
+
+    query({startkey:[1,2], endkey:1, key:"ok",other:"ok"}, function(err, json){
+      // console.log(ok.statusCode, body);
+      test.equal(err, null);
+      test.ok(json.url, 'should have query');
+      // test.ok(json.query.myquery, 'should have query');
+      test.deepEqual(json.url, "/query?startkey=%5B1%2C2%5D&endkey=1&key=%22ok%22&other=ok", 'should be "[1,2]".');
       test.done();
     });
   }
