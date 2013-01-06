@@ -33,7 +33,8 @@
     "pax" : "0.2"
   },
   "devDependencies": {
-    "grunt": "~0.3.6"
+    "grunt": "~0.3.6",
+    "grunt-browserify": "~0.1"
   },
   "keywords": []
 }

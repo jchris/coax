@@ -1,8 +1,26 @@
 module.exports = function(grunt) {
-
+  grunt.loadNpmTasks('grunt-browserify');
   // Project configuration.
   grunt.initConfig({
     pkg: '<json:package.json>',
+    meta: {
+      banner: '\n/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+        '<%= grunt.template.today("yyyy-mm-dd") %>\n ' + '<%= pkg.homepage ? "* " + pkg.homepage + "\n *\n " : "" %>' +
+        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;\n' +
+        ' * Licensed under the <%= _.pluck(pkg.licenses, "type").join(", ") %> license */'
+    },
+    browserify: {
+      "dist/coax_browser.js": {
+        // requires: ['http'],
+        // aliases: ['jquery:jquery-browserify'],
+        entries: ['lib/**/*.js'],
+        prepend: ['<banner:meta.banner>'],
+        append: [],
+        hook: function (bundle) {
+          // Do something with bundle
+        }
+      }
+    },
     test: {
       files: ['test/**/*.js']
     },
