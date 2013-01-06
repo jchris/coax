@@ -2,25 +2,12 @@
 
 Couch client using pax for path currying and request for HTTP.
 
+[![Build Status](https://travis-ci.org/jchris/coax.png?branch=master)](https://travis-ci.org/jchris/coax)
+
 ## Getting Started
 Install the module with: `npm install coax`
 
-```javascript
-var coax = require('coax');
-coax.awesome(); // "awesome"
-```
-
-## Documentation
-_(Coming soon)_
-
-## Examples
-_(Coming soon)_
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/cowboy/grunt).
-
-## Release History
-_(Nothing yet)_
+See [hoax](https://github.com/jchris/hoax) for documentation. Coax is like hoax, but with some Couch-specific things (like JSON encoding key / startkey / endkey).
 
 ## License
 Copyright (c) 2013 Chris Anderson
