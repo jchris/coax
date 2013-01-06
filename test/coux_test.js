@@ -13,7 +13,7 @@ var testServer = function() {
       res.end(err.toString());
     }
     var path = url.parse(req.url).pathname;
-    console.log("path", req.method, path);
+    console.log("test server", req.method, path);
     if (handlers[path]) {
       handlers[path](req, res);
     } else {
@@ -87,7 +87,18 @@ exports['/awesome'] = {
     // test.expect()
     var host = coux("http://localhost:3001/"),
       resource = host(["very","awesome"]);
-    resource.put(function(err, json){
+    resource("", function(err, json){
+      test.equal(err, null);
+      test.equal(json.awesome, true, 'should be awesome.');
+      test.equal(json.method, 'GET', 'should be get.');
+      test.done();
+    });
+  },
+  '200 array curry put' : function(test) {
+    // test.expect()
+    var host = coux("http://localhost:3001/"),
+      resource = host(["very","awesome"]);
+    resource.put("", function(err, json){
       test.equal(err, null);
       test.equal(json.awesome, true, 'should be awesome.');
       test.equal(json.method, 'PUT', 'should be put.');
