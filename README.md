@@ -1,13 +1,13 @@
-# coux
+# coax
 
 Couch client using pax for path currying and request for HTTP.
 
 ## Getting Started
-Install the module with: `npm install coux`
+Install the module with: `npm install coax`
 
 ```javascript
-var coux = require('coux');
-coux.awesome(); // "awesome"
+var coax = require('coax');
+coax.awesome(); // "awesome"
 ```
 
 ## Documentation
@@ -23,5 +23,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2013 Chris Anderson  
+Copyright (c) 2013 Chris Anderson
 Licensed under the Apache license.

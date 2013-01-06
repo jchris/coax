@@ -1,8 +1,8 @@
 {
-  "name": "coux",
+  "name": "coax",
   "description": "Couch client using pax for path currying and request for HTTP.",
   "version": "0.2.0",
-  "homepage": "https://github.com/jchris/coux",
+  "homepage": "https://github.com/jchris/coax",
   "author": {
     "name": "Chris Anderson",
     "email": "jchris@couchbase.com",
@@ -10,18 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jchris/coux.git"
+    "url": "git://github.com/jchris/coax.git"
   },
   "bugs": {
-    "url": "https://github.com/jchris/coux/issues"
+    "url": "https://github.com/jchris/coax/issues"
   },
   "licenses": [
     {
       "type": "Apache",
-      "url": "https://github.com/jchris/coux/blob/master/LICENSE-Apache"
+      "url": "https://github.com/jchris/coax/blob/master/LICENSE-Apache"
     }
   ],
-  "main": "lib/coux",
+  "main": "lib/coax",
   "engines": {
     "node": "~0.8.16"
   },

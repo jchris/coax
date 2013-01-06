@@ -1,4 +1,4 @@
-var coux = require('../lib/coux.js'),
+var coax = require('../lib/coax.js'),
   request = require("request");
 
 var http = require("http"), url = require("url");
@@ -44,7 +44,7 @@ exports['/awesome'] = {
   '200 get': function(test) {
     test.expect(2);
     // tests here
-    coux("http://localhost:3001/awesome", function(err, json){
+    coax("http://localhost:3001/awesome", function(err, json){
       // console.log(ok.statusCode, body);
       test.equal(err, null);
       test.equal(json.awesome, true, 'should be awesome.');
@@ -53,7 +53,7 @@ exports['/awesome'] = {
   },
   '200 array' : function(test) {
     // test.expect()
-    coux(["http://localhost:3001/","very","awesome"], function(err, json){
+    coax(["http://localhost:3001/","very","awesome"], function(err, json){
       test.equal(err, null);
       test.equal(json.awesome, true, 'should be awesome.');
       test.equal(json.method, 'GET', 'should be get.');
@@ -62,7 +62,7 @@ exports['/awesome'] = {
   },
   '200 put' : function(test) {
     // test.expect()
-    coux.put("http://localhost:3001/very/awesome", function(err, json){
+    coax.put("http://localhost:3001/very/awesome", function(err, json){
       test.equal(err, null);
       test.equal(json.awesome, true, 'should be awesome.');
       test.equal(json.method, 'PUT', 'should be put.');
@@ -71,7 +71,7 @@ exports['/awesome'] = {
   },
   '200 array put' : function(test) {
     // test.expect()
-    coux.put(["http://localhost:3001/","very","awesome"], function(err, json){
+    coax.put(["http://localhost:3001/","very","awesome"], function(err, json){
       test.equal(err, null);
       test.equal(json.awesome, true, 'should be awesome.');
       test.equal(json.method, 'PUT', 'should be put.');
@@ -80,7 +80,7 @@ exports['/awesome'] = {
   },
   '200 post' : function(test) {
     test.expect(3);
-    coux.post("http://localhost:3001/very/awesome", function(err, json){
+    coax.post("http://localhost:3001/very/awesome", function(err, json){
       test.equal(err, null);
       test.equal(json.awesome, true, 'should be awesome.');
       test.equal(json.method, 'POST', 'should be put.');
@@ -89,7 +89,7 @@ exports['/awesome'] = {
   },
   '200 array curry' : function(test) {
     // test.expect()
-    var host = coux("http://localhost:3001/"),
+    var host = coax("http://localhost:3001/"),
       resource = host(["very","awesome"]);
     resource("coat", function(err, json){
       test.equal(err, null);
@@ -100,7 +100,7 @@ exports['/awesome'] = {
   },
   '200 array no path' : function(test) {
     // test.expect()
-    var host = coux("http://localhost:3001/"),
+    var host = coax("http://localhost:3001/"),
       resource = host(["very","awesome"]);
     resource(function(err, json){
       test.equal(err, null);
@@ -111,7 +111,7 @@ exports['/awesome'] = {
   },
   '200 array curry put' : function(test) {
     // test.expect()
-    var host = coux("http://localhost:3001/"),
+    var host = coax("http://localhost:3001/"),
       resource = host(["very","awesome"]);
     resource.put(function(err, json){
       test.equal(err, null);
@@ -122,7 +122,7 @@ exports['/awesome'] = {
   },
   'put curry' : function(test) {
     // test.expect()
-    var host = coux("http://localhost:3001/"),
+    var host = coax("http://localhost:3001/"),
       resource = host.put(["very","awesome"]);
     resource("coat",function(err, json){
       test.equal(err, null);
@@ -133,7 +133,7 @@ exports['/awesome'] = {
   }
 };
 
-var query = coux("http://localhost:3001/query");
+var query = coax("http://localhost:3001/query");
 exports['/query'] = {
   setUp: function(done) {
     // setup here
@@ -182,7 +182,7 @@ exports['/error'] = {
   '404': function(test) {
     // test.expect(2);
     // tests here
-    coux("http://localhost:3001/error?status=404",
+    coax("http://localhost:3001/error?status=404",
       function(errJSON, res){
       // console.log(ok.statusCode, body);
       test.equal(res.statusCode, 404, 'response is second argument on error');
