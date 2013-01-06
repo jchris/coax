@@ -133,6 +133,30 @@ exports['/awesome'] = {
   }
 };
 
+var query = coux("http://localhost:3001/query");
+exports['/query'] = {
+  setUp: function(done) {
+    // setup here
+    handlers['/query'] = function(req, res) {
+      res.statusCode = 200;
+      res.end(JSON.stringify({url:req.url, method : req.method}));
+    };
+    done();
+  },
+  '200 get': function(test) {
+    // test.expect(2);
+    // tests here
+    query({myquery:"exciting"}, function(err, json){
+      // console.log(ok.statusCode, body);
+      test.equal(err, null);
+      test.ok(json.url, 'should have query');
+      // test.ok(json.query.myquery, 'should have query');
+      test.deepEqual(json.url, "/query?myquery=exciting", 'should be "exciting".');
+      test.done();
+    });
+  }
+};
+
 exports['/error'] = {
   setUp: function(done) {
     // setup here
