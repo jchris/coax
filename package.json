@@ -1,7 +1,7 @@
 {
   "name": "coax",
   "description": "Couch client using pax for path currying and request for HTTP.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/jchris/coax",
   "author": {
     "name": "Chris Anderson",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "hoax" : "0.2",
-    "pax" : "0.1"
+    "pax" : "0.2"
   },
   "devDependencies": {
     "grunt": "~0.3.6"
