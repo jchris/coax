@@ -170,6 +170,34 @@ exports['/query'] = {
   }
 };
 
+exports["/body"] = {
+  setUp: function(done) {
+    // setup here
+    handlers['/body'] = function(req, res) {
+      var body = "";
+      req.on("data", function(data) {body = body + data;});
+      req.on("end", function(){
+        res.statusCode = 200;
+        res.end(JSON.stringify({url:req.url, method : req.method, body:body}));
+      });
+    };
+    done();
+  },
+  'post': function(test) {
+    // test.expect(2);
+    // tests here
+    var db = coax("http://localhost:3001/body");
+    db.post({'my':"doc"},
+      function(errJSON, res){
+      // console.log(ok.statusCode, body);
+      test.equal(res.url, "/body", 'body');
+      test.equal(res.method, "POST", 'post');
+      test.equal(res.body, '{"my":"doc"}');
+      test.done();
+    });
+  }
+};
+
 exports['/error'] = {
   setUp: function(done) {
     // setup here
