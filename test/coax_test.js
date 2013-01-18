@@ -1,7 +1,7 @@
 var coax = require('../lib/coax.js'),
   request = require("request");
 
-var http = require("http"), url = require("url");
+var http = require("http"), url = require("url"), qs = require("querystring");
 
 var handlers = {};
 
@@ -219,3 +219,32 @@ exports['/error'] = {
     });
   }
 };
+
+exports['_changes'] = {
+  setUp: function(done) {
+    // setup here
+    handlers['/db/_changes'] = function(req, res) {
+      res.statusCode = 200;
+      var uri = qs.parse(url.parse(req.url).query);
+      if (uri.since === "0") {
+        res.end(JSON.stringify({last_seq:10, results:[1,2,3], url:req.url}));
+      } else {
+        res.end(JSON.stringify({last_seq:12, results:[4,5], url:req.url}));
+      }
+    };
+    done();
+  },
+  'basics': function(test) {
+    test.expect(5);
+    // tests here
+    var db = coax("http://localhost:3001/db");
+    db.changes(function(err, change){
+      test.ok(true, "change");
+      if (change === 5) {
+        test.done();
+      }
+    });
+  }
+};
+
+
